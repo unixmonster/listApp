@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>DWI List</title>
+
+	<meta name="description" content="">
+	<meta name="Author" content="Patrick Lynch">
+	<meta name="viewport" content="width=device-width", initial-scale=1.0, user-scalable=1, minimum-scale=1.0, maximum-scale=1.0>
+
+	<link rel="shortcut icon" type="text/css" href="favicon.ico">
+	<link rel="apple-touch-icon" type="text/css" href="app-touch-icon.png">
+
+	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body id="listApp">
+
+
+<!-- Code for page one
+	             _
+ _ __ ___   __ _(_)_ __    _ __   __ _  __ _  ___
+| '_ ` _ \ / _` | | '_ \  | '_ \ / _` |/ _` |/ _ \
+| | | | | | (_| | | | | | | |_) | (_| | (_| |  __/
+|_| |_| |_|\__,_|_|_| |_| | .__/ \__,_|\__, |\___|
+                          |_|          |___/
+Notes: The data-role variable is important here
+
+-->
+<div data-role="page" id="pageone">
+	
+
+	<div data-role="header" class="clearfix">
+		<div>
+			<img id="logo" src="images/logo.png">
+		</div>
+		
+		<p>listApp</p>
+		
+		<div id="addListBtn" class="plusSign">
+			<img src="images/plus.png">
+		</div>
+
+	</div>
+
+	<div data-role="content">
+		<ul id="userLists" data-role="listview"></ul>
+	</div>
+
+	<div data-role="footer" class="ui-bar utility-footer" data-position="fixed" data-tap-toggle="false">
+		<p>listApp &copy; 2013</p>
+	</div>
+
+</div>
+
+
+
+<!--
+     _      _        _ ___     ___
+  __| | ___| |_ __ _(_) \ \   / (_) _____      __
+ / _` |/ _ \ __/ _` | | |\ \ / /| |/ _ \ \ /\ / /
+| (_| |  __/ || (_| | | | \ V / | |  __/\ V  V /
+ \__,_|\___|\__\__,_|_|_|  \_/  |_|\___| \_/\_/
+this is the second view
+-->
+
+<div data-role="page" id="detailView">
+	
+
+	<div data-role="header" class="clearfix">
+		<div>
+			<a href="#"><img id="logo" src="images/logo.png"></a>
+		</div>
+		
+		<p id="listName">listApp</p>
+		<div id="deleteListBtn" class="minusSign">delete<br></div>
+		
+		<div id="addItemBtn" class="plusSign">
+			<img src="images/plus.png">
+		</div>
+
+	</div>
+
+	<div data-role="content">
+		<ul id="userListItems" class="ui-listview" data-theme="c" data-role="listview"></ul>
+	</div>
+
+	<div data-role="footer" class="ui-bar utility-footer" data-position="fixed" data-tap-toggle="false">
+		<p>listApp &copy; 2013</p>
+	</div>
+
+</div>
+
+
+
+<!-- 
+ _ _     _         _ _       _
+| (_)___| |_    __| (_) __ _| | ___   __ _
+| | / __| __|  / _` | |/ _` | |/ _ \ / _` |
+| | \__ \ |_  | (_| | | (_| | | (_) | (_| |
+|_|_|___/\__|  \__,_|_|\__,_|_|\___/ \__, |
+                                     |___/
+-->
+<div data-role="dialog" id="listNameDialog">
+	<div data-role="header"><h1>Name Your List</h1></div>
+	<div data-role="content">
+		<input id="listName" type="text">
+		<a id="namedListBtn" href="#" data-role="button">Submit</a>
+	</div>
+</div>
+
+
+
+<!--
+ _ _                       _ _       _
+(_) |_ ___ _ __ ___     __| (_) __ _| | ___   __ _
+| | __/ _ \ '_ ` _ \   / _` | |/ _` | |/ _ \ / _` |
+| | ||  __/ | | | | | | (_| | | (_| | | (_) | (_| |
+|_|\__\___|_| |_| |_|  \__,_|_|\__,_|_|\___/ \__, |
+                                             |___/
+-->
+<div data-role="dialog" id="addListItemDialog">
+	<div data-role="header"><h1>Add List Item</h1></div>
+	<div data-role="content">
+		<input id="itemName" type="text">
+		<a id="addItemSubmitBtn" href="#" data-role="button">Submit</a>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="vendor/jquery-1.10.2.min.js"></script>
+<!-- overwriting the jquery.mobile defaults with things in jqmconfig.js-->
+<script type="text/javascript" src="js/jqmconfig.js"></script>
+<script type="text/javascript" src="vendor/jquery.mobile-1.3.2.min.js"></script>
+
+<!-- application code -->
+<script type="text/javascript" src="js/scripts.js"></script>
+<script type="text/javascript" src="js/ListApp.js"></script>
+<script type="text/javascript" src="js/MongoStore.js"></script>
+
+<script type="text/javascript">
+	$(document).on('pageinit', "#pageone", function () {
+		ListApp.init();
+	})
+
+	$('#pageone').on('pagebeforeshow', function () {
+		ListApp.buildListPage();
+	})
+
+	$('#detailView').on('pagebeforeshow', function () {
+		ListApp.buildListItemsPage();
+	})
+</script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
